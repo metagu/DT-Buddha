@@ -22,13 +22,12 @@
             height: 100vh;
             background: url('background.jpg') no-repeat center center/cover;
             z-index: -1;
-            transform: scale(1);
-            transition: transform 0.2s ease-out;
         }
         .container {
             position: relative;
             text-align: center;
             padding: 5rem 2rem;
+            transition: transform 0.2s ease-out;
         }
         .foreground-images {
             position: relative;
@@ -36,12 +35,14 @@
             justify-content: center;
             gap: 20px;
             margin-bottom: 20px;
+            transition: transform 0.2s ease-out;
         }
         .foreground-images img {
             width: 250px;
             height: auto;
             border-radius: 10px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease-out;
         }
         .content {
             max-width: 800px;
@@ -50,6 +51,7 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease-out;
         }
         .info-table {
             width: 100%;
@@ -72,14 +74,13 @@
             <img src="image3.jpg" alt="Image 3">
         </div>
         <div class="content">
-            <h1>精彩活動等你來參加！</h1>
-            <p>您想過一種安樂、解脫、自在的生活嗎？</p>
-			<p>您想當一個正信的佛教徒嗎？</p>
-			<p>來吧！讓我們一起投入佛陀的世界，</p>
-			<p>學習佛陀用智慧引導生活，使生活充滿喜悅，</p>
-			<p>學習佛陀用智慧引導生活，使生活充滿喜悅，</p>
-			<p>使人生過得充實而富意義。竭誠歡迎您加入</p>
-			<p>我們共修行列。</p>
+            <h1>您想過一種安樂、解脫、自在的生活嗎？</h1>
+            <h1>您想當一個正信的佛教徒嗎？</h1>
+			<h1>來吧！讓我們一起投入佛陀的世界，</h1>
+			<h1>學習佛陀用智慧引導生活，使生活充滿喜悅，</h1>
+			<h1>學習佛陀用智慧引導生活，使生活充滿喜悅，</h1>
+			<h1>使人生過得充實而富意義。竭誠歡迎您加入</h1>
+			<h1>我們共修行列。</h1>
             <table class="info-table">
                 <tr><td><strong>活動日期：</strong></td><td>2025年4月20日</td></tr>
                 <tr><td><strong>活動時間：</strong></td><td>下午 2:00 - 6:00</td></tr>
@@ -90,10 +91,19 @@
         </div>
     </div>
     <script>
+        let timeout;
         window.addEventListener('scroll', function() {
-            let scrollValue = window.scrollY;
-            let scaleValue = 1 - scrollValue / 3000;
-            document.getElementById('bg').style.transform = `scale(${scaleValue})`;
+            clearTimeout(timeout);
+            let scaleValue = 0.98;
+            document.getElementById('container').style.transform = `scale(${scaleValue})`;
+            document.getElementById('foreground').style.transform = `scale(${scaleValue})`;
+            document.getElementById('content').style.transform = `scale(${scaleValue})`;
+            
+            timeout = setTimeout(() => {
+                document.getElementById('container').style.transform = 'scale(1)';
+                document.getElementById('foreground').style.transform = 'scale(1)';
+                document.getElementById('content').style.transform = 'scale(1)';
+            }, 150);
         });
     </script>
 </body>
